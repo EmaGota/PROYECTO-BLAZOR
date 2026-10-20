@@ -1,0 +1,274 @@
+@page "/enciclopedia"
+@using BovedaUru.Components.Modelo
+
+
+<PageTitle>Enciclopedia de personajes - La Boveda De Uru</PageTitle>
+
+<BarraNav />
+
+
+<main class="contenedor-enciclopedia">
+
+    <section class="filtro_enciclopedia">
+
+        <h2>Filtros de busqueda</h2>
+
+        <div class="fila_de_filtros">
+
+            <div class="filtro_enciclopedia">
+
+                <label for="personaje">
+                    Personaje
+                </label>
+
+                <input type="text"
+                       id="personaje"
+                       @bind="personaje"/>
+
+            </div>
+
+
+            <div class="filtro_enciclopedia">
+
+                <label for="grupo">
+                    Grupo
+                </label>
+
+                <input type="text"
+                       id="grupo"
+                       @bind="grupo"/>
+
+            </div>
+
+
+            <div class="filtro_enciclopedia">
+
+                <label for="año">
+                    Año
+                </label>
+
+                <input type="text"
+                       id="año"
+                       @bind="año"/>
+
+            </div>
+
+
+            <div class="filtro_enciclopedia">
+
+                <label for="editorial">
+                    Editorial
+                </label>
+
+                <input type="text"
+                       id="editorial"
+                       @bind="editorial"/>
+
+            </div>
+
+
+            <button type="button"
+                    class="boton_filtro"
+                    @onclick="Filtrar">
+
+                Filtrar resultados
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <section class="enciclopedia">
+
+        <h2>Enciclopedia de personajes</h2>
+
+        <div class="lista_de_personajes">
+
+            @foreach (var personaje in personajesFiltrados)
+            {
+                <TarjPersonaje
+                    Nombre="@personaje.Nombre"
+                    Imagen="@personaje.Imagen"/>
+            }
+
+        </div>
+
+    </section>
+
+</main>
+
+
+@code {
+
+    private string personaje = "";
+    private string grupo = "";
+    private string año = "";
+    private string editorial = "";
+
+
+    private List<Personaje> personajes = new()
+    {
+        new Personaje
+        {
+            Nombre = "Ghost Rider",
+            Grupo = "ghost rider, mistico, marvel",
+            Año = 1970,
+            Editorial = "Marvel Comics",
+            Imagen = "images/GHOST_RIDER_RENDER.jpg"
+        },
+
+        new Personaje
+        {
+            Nombre = "Beta Ray Bill",
+            Grupo = "Asgard, Cosmico, marvel",
+            Año = 1980,
+            Editorial = "Marvel Comics",
+            Imagen = "images/BETA_RAY_BILL_RENDER.jpg"
+        },
+
+        new Personaje
+        {
+            Nombre = "Angela",
+            Grupo = "Spawn, otros",
+            Año = 1990,
+            Editorial = "Image Comics",
+            Imagen = "images/ANGELA_RENDER.jpg"
+        },
+
+        new Personaje
+        {
+            Nombre = "Hellboy",
+            Grupo = "mistico, otros",
+            Año = 2000,
+            Editorial = "Dark Horse Comics",
+            Imagen = "images/HELLBOY_RENDER.jpg"
+        },
+
+        new Personaje
+        {
+            Nombre = "Sleeper",
+            Grupo = "Simbionte, marvel",
+            Año = 2020,
+            Editorial = "Marvel Comics",
+            Imagen = "images/SLEEEPER_RENDER.jpg"
+        },
+
+        new Personaje
+        {
+            Nombre = "Doctor Strange",
+            Grupo = "mistico, marvel",
+            Año = 1960,
+            Editorial = "Marvel Comics",
+            Imagen = "images/DOCTOR_STRANGE_RENDER.jpg"
+        },
+
+        new Personaje
+        {
+            Nombre = "Redeemer",
+            Grupo = "Spawn, otros",
+            Año = 1990,
+            Editorial = "Image Comics",
+            Imagen = "images/SPAWN_REDEEMER_RENDER.jpg"
+        },
+
+        new Personaje
+        {
+            Nombre = "Abraham Sapien",
+            Grupo = "mistico, otros",
+            Año = 2000,
+            Editorial = "Dark Horse Comics",
+            Imagen = "images/ABE_SAPIEN_RENDER.jpg"
+        }
+    };
+
+
+    private List<Personaje> personajesFiltrados = new();
+
+
+    protected override void OnInitialized()
+    {
+        personajesFiltrados = personajes.ToList();
+    }
+
+
+    private void Filtrar()
+    {
+        string personajeBuscado =
+            personaje.ToLower().Trim();
+
+        string grupoBuscado =
+            grupo.ToLower().Trim();
+
+        string editorialBuscada =
+            editorial.ToLower().Trim();
+
+
+        personajesFiltrados = personajes
+            .Where(p =>
+                FiltrarPersonaje(p, personajeBuscado) &&
+                FiltrarGrupo(p, grupoBuscado) &&
+                FiltrarAño(p) &&
+                FiltrarEditorial(p, editorialBuscada)
+            )
+            .ToList();
+    }
+
+
+    private bool FiltrarPersonaje(
+        Personaje personaje,
+        string personajeBuscado)
+    {
+        if (personajeBuscado == "")
+            return true;
+
+        return personaje.Nombre
+            .ToLower()
+            .Contains(personajeBuscado);
+    }
+
+
+    private bool FiltrarGrupo(
+        Personaje personaje,
+        string grupoBuscado)
+    {
+        if (grupoBuscado == "")
+            return true;
+
+        return personaje.Grupo
+            .ToLower()
+            .Contains(grupoBuscado);
+    }
+
+
+    private bool FiltrarAño(Personaje personaje)
+    {
+        if (año.Trim() == "")
+            return true;
+
+        if (!int.TryParse(
+                año.Trim(),
+                out int añoBuscado))
+        {
+            return false;
+        }
+
+        return personaje.Año >= añoBuscado &&
+               personaje.Año <= añoBuscado + 9;
+    }
+
+
+    private bool FiltrarEditorial(
+        Personaje personaje,
+        string editorialBuscada)
+    {
+        if (editorialBuscada == "")
+            return true;
+
+        return personaje.Editorial
+            .ToLower()
+            .Contains(editorialBuscada);
+    }
+
+}

@@ -1,0 +1,21 @@
+<article class="personaje_tarjeta">
+
+    <img src="@Imagen" alt="@Nombre">
+
+    <div class="info_personaje">
+
+        <h3>@Nombre</h3>
+
+    </div>
+
+</article>
+
+
+@code
+{
+
+    [Parameter] public string Nombre { get; set; } = "";
+
+    [Parameter] public string Imagen { get; set; } = "";
+
+}

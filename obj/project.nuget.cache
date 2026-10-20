@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "Wvi5XUv3O1w=",
+  "success": true,
+  "projectFilePath": "c:\\Users\\elman\\BovedaUru\\BovedaUru.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\elman\\.nuget\\packages\\microsoft.aspnetcore.app.internal.assets\\10.0.13\\microsoft.aspnetcore.app.internal.assets.10.0.13.nupkg.sha512"
+  ],
+  "logs": []
+}

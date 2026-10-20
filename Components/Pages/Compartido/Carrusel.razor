@@ -1,0 +1,92 @@
+@using BovedaUru.Components.Modelo
+<div class="carrusel">
+    <button class="prev" @onclick="Anterior">
+        &#10094
+    </button>
+
+    <div class="carrusel-contenedor">
+        @if (portadas.Count > 0)
+        {
+            var portada = portadas[indiceActual];
+            <a href="@portada.Enlace" class="slide active">
+                <img src="@portada.Imagen"
+                     alt="@portada.Titulo"/>
+                <div class="Descripcion_carrusel">
+                    <h3>
+                        @portada.Titulo
+                    </h3>
+
+                    <p>
+                        @portada.Descripcion
+                    </p>
+
+                </div>
+            </a>
+        }
+    </div>
+
+
+    <button class="next" @onclick="Siguiente">
+        &#10095
+    </button>
+</div>
+
+@code
+{
+    private int indiceActual = 0;
+
+    private List<Portada> portadas = new()
+    {
+        new Portada
+        {
+            Imagen = "images/BETA_RAY_BILL C1.jpg",
+            Titulo = "¡El elegido de los Korbinitas!",
+            Descripcion = "Lean la increible histora de Beta Ray Bill, Hermano de Armas de Thor y portador del RompeTormentas!",
+            Enlace = "/"
+        },
+
+        new Portada
+        {
+            Imagen = "images/MARVEL MISTICO C2.jpg",
+            Titulo = "¡Por el ojo de Agamotto!",
+            Descripcion = "Desde Doctor Strange y Ghost Rider hasta la Bruja Escarlata y Nico Minoru, el lado mistico de Marvel esta lleno de sorpresas...",
+            Enlace = "/"
+        },
+
+        new Portada
+        {
+            Imagen = "images/FEAR ITSELF C3.jpg",
+            Titulo = "¡Yo soy el miedo mismo!",
+            Descripcion = "Fear Itself: los heroes mas poderosos del planeta se enfrentan a Los Dignos de la Serpiente, el hermano olvidado de Odin",
+            Enlace = "/"
+        },
+
+        new Portada
+        {
+            Imagen = "images/IMAGE COMICS C4.jpg",
+            Titulo = "¡Explora los rincones del mundo de los comics!",
+            Descripcion = "Desde Todd McFarland hasta Mike Mignola, de Image Comics y Dark Horse Comics tambien, tenemos una gran variedad de historias.",
+            Enlace = "/"
+        }
+    };
+
+
+    private void Siguiente()
+    {
+        indiceActual++;
+        if (indiceActual >= portadas.Count)
+        {
+            indiceActual = 0;
+        }
+    }
+
+
+    private void Anterior()
+    {
+        indiceActual--;
+        if (indiceActual < 0)
+        {
+            indiceActual = portadas.Count - 1;
+        }
+    }
+}

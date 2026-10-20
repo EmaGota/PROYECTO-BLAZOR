@@ -1,0 +1,87 @@
+@using BovedaUru.Components.Modelo
+
+<aside class="filtros">
+
+    <h2>Filtros</h2>
+
+    <div class="filtro">
+
+        <label for="personaje">
+            Personaje
+        </label>
+
+        <input type="text"
+               id="personaje"
+               class="form-control"
+               @bind="filtros.Personaje"/>
+
+    </div>
+
+
+    <div class="filtro">
+
+        <label for="grupo">
+            Grupo
+        </label>
+
+        <input type="text"
+               id="grupo"
+               class="form-control"
+               @bind="filtros.Grupo"/>
+
+    </div>
+
+
+    <div class="filtro">
+
+        <label for="año">
+            Año de lanzamiento
+        </label>
+
+        <input type="text"
+               id="año"
+               class="form-control"
+               @bind="filtros.Año"/>
+
+    </div>
+
+
+    <div class="filtro">
+
+        <label for="editorial">
+            Editorial
+        </label>
+
+        <input type="text"
+               id="editorial"
+               class="form-control"
+               @bind="filtros.Editorial"/>
+
+    </div>
+
+
+    <button type="button"
+            class="boton_filtro"
+            @onclick="AplicarFiltro">
+
+        Filtrar resultados
+
+    </button>
+
+</aside>
+
+
+@code {
+
+    private FiltroComic filtros = new();
+
+
+    [Parameter] public EventCallback<FiltroComic> OnFiltrar { get; set; }
+
+
+    private async Task AplicarFiltro()
+    {
+        await OnFiltrar.InvokeAsync(filtros);
+    }
+
+}

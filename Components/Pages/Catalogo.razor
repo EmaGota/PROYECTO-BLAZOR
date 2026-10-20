@@ -1,0 +1,208 @@
+@page "/catalogo"
+
+@using BovedaUru.Components.Modelo
+
+<PageTitle>Catalogo de historias - La Boveda de Uru</PageTitle>
+
+<BarraNav/>
+
+<main class="catalogo_contenedor">
+
+    <Filtro OnFiltrar="Filtrar"/>
+
+    <section class="catalogo">
+
+        <h2>Lista de Comics</h2>
+
+        <div class="lista_catalogo">
+
+            @foreach (var comic in comicsFiltrados)
+            {
+                <TarjComic
+                    Imagen="@comic.Imagen"
+                    Titulo="@comic.Titulo"
+                    Editorial="@comic.Editorial"
+                    Año="@comic.Año"/>
+            }
+
+        </div>
+
+    </section>
+
+</main>
+@code 
+{
+   private List<Comic> comics = new()
+   {
+       new Comic
+       {
+           Personaje = "Ghost Rider",
+           Grupo = "Ghost Rider",
+           Año = 2014,
+           Editorial = "Marvel Comics",
+           Imagen = "images/ANGR_01.jpg",
+           Titulo = "All-New Ghost Rider"
+       },
+
+       new Comic
+       {
+           Personaje = "Beta Ray Bill",
+           Grupo = "Asgard, Cosmico",
+           Año = 2021,
+           Editorial = "Marvel Comics",
+           Imagen = "images/BETA_RAY_BILL_2021.jpg",
+           Titulo = "Beta Ray Bill"
+       },
+
+       new Comic
+       {
+           Personaje = "Varios",
+           Grupo = "Asgard, Eventos",
+           Año = 2011,
+           Editorial = "Marvel Comics",
+           Imagen = "images/FEAR_ITSELF_BOOK_ONE.jpg",
+           Titulo = "Fear Itself: Book One"
+       },
+
+       new Comic
+       {
+           Personaje = "Varios",
+           Grupo = "Eventos",
+           Año = 2019,
+           Editorial = "Marvel Comics",
+           Imagen = "images/WAR_OF_THE_REALMS 2019.jpg",
+           Titulo = "War of the Realms"
+       },
+
+       new Comic
+       {
+           Personaje = "Ghost Rider",
+           Grupo = "Ghost Rider",
+           Año = 1990,
+           Editorial = "Marvel Comics",
+           Imagen = "images/SPIRITS_OF_VENGANCE.jpg",
+           Titulo = "Ghost Rider & Blaze: Spirits of Vengeance"
+       },
+
+       new Comic
+       {
+           Personaje = "Hellboy",
+           Grupo = "Hellboy",
+           Año = 2001,
+           Editorial = "Dark Horse Comics, Otras Editoriales",
+           Imagen = "images/HELLBOY_ISSUE_1.jpg",
+           Titulo = "Hellboy: Seed of Destruction"
+       },
+
+       new Comic
+       {
+           Personaje = "Spawn",
+           Grupo = "Spawn",
+           Año = 1990,
+           Editorial = "Image Comics, Otras Editoriales",
+           Imagen = "images/SPAWN_15.jpg",
+           Titulo = "Spawn: issue #15"
+       },
+
+       new Comic
+       {
+           Personaje = "Angela",
+           Grupo = "Angela, Spawn",
+           Año = 1990,
+           Editorial = "Image Comics, Otras Editoriales",
+           Imagen = "images/ANGELA_SPAWN.jpg",
+           Titulo = "Spawn: Issue #9"
+       }
+   };
+
+
+   private List<Comic> comicsFiltrados = new();
+
+
+   protected override void OnInitialized()
+   {
+       comicsFiltrados = comics.ToList();
+   }
+
+
+   private void Filtrar(FiltroComic filtros)
+   {
+       string personajeBuscado =
+           filtros.Personaje.ToLower().Trim();
+
+       string grupoBuscado =
+           filtros.Grupo.ToLower().Trim();
+
+       string editorialBuscada =
+           filtros.Editorial.ToLower().Trim();
+
+
+       comicsFiltrados = comics
+           .Where(comic =>
+               FiltrarPersonaje(comic, personajeBuscado) &&
+               FiltrarGrupo(comic, grupoBuscado) &&
+               FiltrarAño(comic, filtros.Año) &&
+               FiltrarEditorial(comic, editorialBuscada)
+           )
+           .ToList();
+   }
+
+
+   private bool FiltrarPersonaje(
+       Comic comic,
+       string personajeBuscado)
+   {
+       if (personajeBuscado == "")
+           return true;
+
+       return comic.Personaje
+           .ToLower()
+           .Contains(personajeBuscado);
+   }
+
+
+   private bool FiltrarGrupo(
+       Comic comic,
+       string grupoBuscado)
+   {
+       if (grupoBuscado == "")
+           return true;
+
+       return comic.Grupo
+           .ToLower()
+           .Contains(grupoBuscado);
+   }
+
+
+   private bool FiltrarAño(
+       Comic comic,
+       string añoBuscado)
+   {
+       if (añoBuscado.Trim() == "")
+           return true;
+
+       if (!int.TryParse(
+               añoBuscado.Trim(),
+               out int año))
+       {
+           return false;
+       }
+
+       return comic.Año >= año &&
+              comic.Año <= año + 9;
+   }
+
+
+   private bool FiltrarEditorial(
+       Comic comic,
+       string editorialBuscada)
+   {
+       if (editorialBuscada == "")
+           return true;
+
+       return comic.Editorial
+           .ToLower()
+           .Contains(editorialBuscada);
+   }
+
+}
