@@ -6,3 +6,12 @@ c:\Users\elman\BovedaUru\obj\Debug\net10.0\BovedaUru.AssemblyInfoInputs.cache
 c:\Users\elman\BovedaUru\obj\Debug\net10.0\BovedaUru.AssemblyInfo.cs
 c:\Users\elman\BovedaUru\obj\Debug\net10.0\BovedaUru.csproj.CoreCompileInputs.cache
 c:\Users\elman\BovedaUru\obj\Debug\net10.0\BovedaUru.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\graci\OneDrive\Escritorio\Gota Emanuel\EDI3_BLAZOR\PROYECTO-BLAZOR\obj\Debug\net10.0\EmbeddedAttribute.cs
+C:\Users\graci\OneDrive\Escritorio\Gota Emanuel\EDI3_BLAZOR\PROYECTO-BLAZOR\obj\Debug\net10.0\ValidatableTypeAttribute.cs
+C:\Users\graci\OneDrive\Escritorio\Gota Emanuel\EDI3_BLAZOR\PROYECTO-BLAZOR\obj\Debug\net10.0\rpswa.dswa.cache.json
+C:\Users\graci\OneDrive\Escritorio\Gota Emanuel\EDI3_BLAZOR\PROYECTO-BLAZOR\obj\Debug\net10.0\BovedaUru.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\graci\OneDrive\Escritorio\Gota Emanuel\EDI3_BLAZOR\PROYECTO-BLAZOR\obj\Debug\net10.0\BovedaUru.AssemblyInfoInputs.cache
+C:\Users\graci\OneDrive\Escritorio\Gota Emanuel\EDI3_BLAZOR\PROYECTO-BLAZOR\obj\Debug\net10.0\BovedaUru.AssemblyInfo.cs
+c:\Users\graci\OneDrive\Escritorio\Gota Emanuel\EDI3_BLAZOR\PROYECTO-BLAZOR\obj\Debug\net10.0\BovedaUru.csproj.CoreCompileInputs.cache
+c:\Users\graci\OneDrive\Escritorio\Gota Emanuel\EDI3_BLAZOR\PROYECTO-BLAZOR\obj\Debug\net10.0\BovedaUru.MvcApplicationPartsAssemblyInfo.cache
+c:\Users\graci\OneDrive\Escritorio\Gota Emanuel\EDI3_BLAZOR\PROYECTO-BLAZOR\obj\Debug\net10.0\BovedaUru.sourcelink.json

@@ -45,19 +45,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\elman\\.nuget\\packages\\": {}
+    "C:\\Users\\graci\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\elman\\BovedaUru\\BovedaUru.csproj",
+      "projectUniqueName": "c:\\Users\\graci\\OneDrive\\Escritorio\\Gota Emanuel\\EDI3_BLAZOR\\PROYECTO-BLAZOR\\BovedaUru.csproj",
       "projectName": "BovedaUru",
-      "projectPath": "c:\\Users\\elman\\BovedaUru\\BovedaUru.csproj",
-      "packagesPath": "C:\\Users\\elman\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\elman\\BovedaUru\\obj\\",
+      "projectPath": "c:\\Users\\graci\\OneDrive\\Escritorio\\Gota Emanuel\\EDI3_BLAZOR\\PROYECTO-BLAZOR\\BovedaUru.csproj",
+      "packagesPath": "C:\\Users\\graci\\.nuget\\packages\\",
+      "outputPath": "c:\\Users\\graci\\OneDrive\\Escritorio\\Gota Emanuel\\EDI3_BLAZOR\\PROYECTO-BLAZOR\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\elman\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\graci\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
