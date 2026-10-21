@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "v1KCeXPoGRU=",
+  "dgSpecHash": "Wvi5XUv3O1w=",
   "success": true,
-  "projectFilePath": "c:\\Users\\graci\\OneDrive\\Escritorio\\Gota Emanuel\\EDI3_BLAZOR\\PROYECTO-BLAZOR\\BovedaUru.csproj",
+  "projectFilePath": "c:\\Users\\elman\\BovedaUru\\BovedaUru.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\graci\\.nuget\\packages\\microsoft.aspnetcore.app.internal.assets\\10.0.13\\microsoft.aspnetcore.app.internal.assets.10.0.13.nupkg.sha512"
+    "C:\\Users\\elman\\.nuget\\packages\\microsoft.aspnetcore.app.internal.assets\\10.0.13\\microsoft.aspnetcore.app.internal.assets.10.0.13.nupkg.sha512"
   ],
   "logs": []
 }

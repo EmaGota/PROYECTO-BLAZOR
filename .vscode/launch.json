@@ -1,17 +1,21 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "ReSharper: .NET Core / .NET 5+ Executable",
+            "name": "BovedaUru",
             "type": "coreclr",
             "request": "launch",
+            "preLaunchTask": "ReSharper: Build",
+            "program": "${workspaceFolder}/bin/Debug/net10.0/BovedaUru.dll",
             "cwd": "${workspaceFolder}",
             "args": [],
-            "env": {},
-            "preLaunchTask": "ReSharper: Build"
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            },
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+            }
         },
         {
             "name": "ReSharper: .NET Core / .NET 5+ Attach",

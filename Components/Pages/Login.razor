@@ -7,7 +7,7 @@
 
 <PageTitle>Iniciar Sesion-La Boveda de Uru</PageTitle>
 
-<Barranav />
+<BarraNav />
 
 <section class="InicioContenedor">
     <div class="login">
@@ -79,7 +79,7 @@
 
         [Required(ErrorMessage="Ingrese la Contraseña.")]
 
-        [MinLenght(8, ErrorMessage = "La contraseña debe tener al menos 8 caracteres.")]
+        [MinLength(8, ErrorMessage = "La contraseña debe tener al menos 8 caracteres.")]
         
         [RegularExpression(
           @"^(?=*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9]).+$",
