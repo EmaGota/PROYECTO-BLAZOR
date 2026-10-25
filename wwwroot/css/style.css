@@ -1,0 +1,435 @@
+/* =====================================================
+   La Boveda de Uru - style.css
+   Ubicacion: wwwroot/css/style.css
+   Para cambiar la paleta, edita las variables de abajo.
+   ===================================================== */
+
+:root {
+    --negro: #000000;
+    --rojo-oscuro: #8b0000;
+    --fondo: #121212;
+    --superficie: #1e1e1e;
+    --borde: #333333;
+    --texto: #f1f1f1;
+    --texto-suave: #b5b5b5;
+}
+
+body {
+    background-color: var(--fondo);
+    color: var(--texto);
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+h2 {
+    color: var(--texto);
+    margin-bottom: 1rem;
+}
+
+
+/* =====================================================
+   HEADER (BarraNav)
+   Fondo negro y 4 botones: Inicio, Catalogo,
+   Enciclopedia e Iniciar Sesion.
+   Al pasar el cursor, el boton se pone rojo oscuro.
+   ===================================================== */
+
+.navbar {
+    background-color: var(--negro) !important;
+    border-bottom: 2px solid var(--rojo-oscuro);
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+}
+
+.navbar .navbar-brand {
+    color: #ffffff;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.navbar .navbar-nav {
+    gap: 0.4rem;
+}
+
+.navbar .navbar-nav .nav-link {
+    color: #ffffff;
+    padding: 0.55rem 1.25rem;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.navbar .navbar-nav .nav-link:hover,
+.navbar .navbar-nav .nav-link:focus {
+    background-color: var(--rojo-oscuro);
+    color: #ffffff;
+}
+
+/* En pantallas chicas los botones ocupan todo el ancho */
+@media (max-width: 991.98px) {
+    .navbar .navbar-nav {
+        margin-top: 0.75rem;
+    }
+
+    .navbar .navbar-nav .nav-link {
+        text-align: center;
+    }
+}
+
+
+/* =====================================================
+   PAGINA DE INICIO
+   ===================================================== */
+
+.pagina_inicio {
+    min-height: calc(100vh - 64px);
+    padding: 2rem 1rem 3rem;
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+        url("/images/FEAR_ITSELF_THE_WORTHY.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.pagina_inicio > .contenedor,
+.pagina_inicio > .carrusel 
+{
+    max-width: 1100px;
+    margin-inline: auto;
+}
+
+.contenedor {
+    background-color: var(--superficie);
+    border-left: 4px solid var(--rojo-oscuro);
+    border-radius: 8px;
+    padding: 1.5rem 2rem;
+    margin-bottom: 2rem;
+}
+
+.contenedor p {
+    color: var(--texto-suave);
+    line-height: 1.7;
+    margin-bottom: 0;
+}
+
+
+/* =====================================================
+   CARRUSEL
+   ===================================================== */
+
+.carrusel {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.carrusel-contenedor {
+    flex: 1;
+    min-width: 0;
+}
+
+.carrusel .slide {
+    position: relative;
+    display: block;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 8px;
+    border: 1px solid var(--borde);
+    background-color: var(--negro);
+    text-decoration: none;
+}
+
+.carrusel .slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.Descripcion_carrusel {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 2.5rem 1.25rem 1rem;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0));
+    color: #ffffff;
+}
+
+.Descripcion_carrusel h3 {
+    margin: 0 0 0.35rem;
+    font-size: 1.3rem;
+}
+
+.Descripcion_carrusel p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #dddddd;
+}
+
+.carrusel .prev,
+.carrusel .next {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    border: none;
+    border-radius: 50%;
+    background-color: var(--negro);
+    color: #ffffff;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.carrusel .prev:hover,
+.carrusel .next:hover {
+    background-color: var(--rojo-oscuro);
+}
+
+
+/* =====================================================
+   CATALOGO
+   ===================================================== */
+
+.catalogo_contenedor {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 2rem 1rem 3rem;
+}
+
+.filtros {
+    flex: 0 0 260px;
+    background-color: var(--superficie);
+    border: 1px solid var(--borde);
+    border-top: 3px solid var(--rojo-oscuro);
+    border-radius: 8px;
+    padding: 1.25rem;
+}
+
+.filtro {
+    margin-bottom: 1rem;
+}
+
+.filtro label,
+.filtro_enciclopedia label {
+    display: block;
+    margin-bottom: 0.3rem;
+    color: var(--texto-suave);
+    font-size: 0.9rem;
+}
+
+.boton_filtro {
+    width: 100%;
+    padding: 0.6rem 1rem;
+    border: none;
+    border-radius: 6px;
+    background-color: var(--rojo-oscuro);
+    color: #ffffff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.boton_filtro:hover {
+    background-color: #a30000;
+}
+
+.catalogo {
+    flex: 1;
+    min-width: 0;
+}
+
+.lista_catalogo,
+.lista_de_personajes {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 1.25rem;
+}
+
+
+/* =====================================================
+   TARJETAS (comics y personajes)
+   ===================================================== */
+
+.personaje_tarjeta {
+    background-color: var(--superficie);
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.personaje_tarjeta:hover {
+    transform: translateY(-4px);
+    border-color: var(--rojo-oscuro);
+}
+
+.personaje_tarjeta img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+    background-color: var(--negro);
+}
+
+.info_personaje {
+    padding: 0.75rem;
+}
+
+.info_personaje h3 {
+    margin: 0 0 0.25rem;
+    font-size: 1rem;
+    line-height: 1.3;
+}
+
+.info_personaje p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--texto-suave);
+}
+
+
+/* =====================================================
+   ENCICLOPEDIA
+   ===================================================== */
+
+.contenedor-enciclopedia {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 2rem 1rem 3rem;
+}
+
+/* La clase se usa en la seccion y en cada campo; solo la
+   seccion (la que contiene la fila) lleva el recuadro. */
+.contenedor-enciclopedia > .filtro_enciclopedia {
+    background-color: var(--superficie);
+    border: 1px solid var(--borde);
+    border-top: 3px solid var(--rojo-oscuro);
+    border-radius: 8px;
+    padding: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+.fila_de_filtros {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 1rem;
+}
+
+.fila_de_filtros .filtro_enciclopedia {
+    flex: 1 1 180px;
+}
+
+.fila_de_filtros input {
+    width: 100%;
+    padding: 0.4rem 0.6rem;
+    border: 1px solid var(--borde);
+    border-radius: 6px;
+    background-color: #ffffff;
+    color: #212529;
+}
+
+.fila_de_filtros .boton_filtro {
+    width: auto;
+    flex: 0 0 auto;
+}
+
+.enciclopedia {
+    min-width: 0;
+}
+
+
+/* =====================================================
+   INICIO DE SESION
+   ===================================================== */
+
+.InicioContenedor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 64px);
+    padding: 3rem 1rem;
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+        url("/images/CIVIL_WAR_LOGIN.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.login {
+    width: 100%;
+    max-width: 420px;
+    background-color: var(--superficie);
+    border: 1px solid var(--borde);
+    border-top: 3px solid var(--rojo-oscuro);
+    border-radius: 8px;
+    padding: 2rem;
+}
+
+.login h2 {
+    text-align: center;
+}
+
+.login label {
+    display: block;
+    margin-bottom: 0.3rem;
+    color: var(--texto-suave);
+}
+
+.login button[type="submit"] {
+    width: 100%;
+    padding: 0.6rem 1rem;
+    border: none;
+    border-radius: 6px;
+    background-color: var(--rojo-oscuro);
+    color: #ffffff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.login button[type="submit"]:hover {
+    background-color: #a30000;
+}
+
+.login p {
+    margin: 1rem 0 0;
+    text-align: center;
+    color: var(--texto-suave);
+}
+
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+
+@media (max-width: 768px) {
+    .catalogo_contenedor {
+        flex-direction: column;
+    }
+
+    .filtros {
+        flex: none;
+        width: 100%;
+    }
+
+    .carrusel .prev,
+    .carrusel .next {
+        width: 36px;
+        height: 36px;
+    }
+
+    .Descripcion_carrusel p {
+        display: none;
+    }
+
+    .error_filtro {
+    margin: 0.35rem 0 0;
+    font-size: 0.85rem;
+    color: #ff6b6b;
+    }
+}

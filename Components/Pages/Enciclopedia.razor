@@ -43,15 +43,14 @@
 
             <div class="filtro_enciclopedia">
 
-                <label for="año">
-                    Año
-                </label>
+                <input type="text" id="año" maxlength="4" inputmode="numeric" placeholder="Ej: 1990"
+                       oninput="this.value = this.value.replace(/\D/g, '')" @bind="año" />
 
-                <input type="text"
-                       id="año"
-                       @bind="año"/>
-
-            </div>
+                       @if (!string.IsNullOrEmpty(errorAño))
+                       {
+                           <p class="error_filtro">@errorAño</p>
+                        }
+                </div>
 
 
             <div class="filtro_enciclopedia">
@@ -105,6 +104,7 @@
     private string personaje = "";
     private string grupo = "";
     private string año = "";
+    private string errorAño = "";
     private string editorial = "";
 
 
@@ -195,6 +195,17 @@
 
     private void Filtrar()
     {
+        año = año.Trim();
+
+        if (año != "" &&
+            !(año.Length == 4 && año.All(c => c >= '0' && c <= '9')))
+        {
+            errorAño = "El año debe tener exactamente 4 números.";
+            return;
+        }
+
+        errorAño = "";
+        
         string personajeBuscado =
             personaje.ToLower().Trim();
 

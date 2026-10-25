@@ -10,10 +10,7 @@
             Personaje
         </label>
 
-        <input type="text"
-               id="personaje"
-               class="form-control"
-               @bind="filtros.Personaje"/>
+        <input type="text" id="personaje" class="form-control" @bind="filtros.Personaje" />
 
     </div>
 
@@ -24,10 +21,7 @@
             Grupo
         </label>
 
-        <input type="text"
-               id="grupo"
-               class="form-control"
-               @bind="filtros.Grupo"/>
+        <input type="text" id="grupo" class="form-control" @bind="filtros.Grupo" />
 
     </div>
 
@@ -38,10 +32,13 @@
             Año de lanzamiento
         </label>
 
-        <input type="text"
-               id="año"
-               class="form-control"
-               @bind="filtros.Año"/>
+        <input type="text" id="año" class="form-control" maxlength="4" inputmode="numeric" placeholder="Ej: 1990"
+               oninput="this.value = this.value.replace(/\D/g, '')" @bind="filtros.Año" />
+
+        @if (!string.IsNullOrEmpty(errorAño))
+        {
+            <p class="error_filtro">@errorAño</p>
+        }
 
     </div>
 
@@ -52,17 +49,12 @@
             Editorial
         </label>
 
-        <input type="text"
-               id="editorial"
-               class="form-control"
-               @bind="filtros.Editorial"/>
+        <input type="text" id="editorial" class="form-control" @bind="filtros.Editorial" />
 
     </div>
 
 
-    <button type="button"
-            class="boton_filtro"
-            @onclick="AplicarFiltro">
+    <button type="button" class="boton_filtro" @onclick="AplicarFiltro">
 
         Filtrar resultados
 
@@ -75,12 +67,31 @@
 
     private FiltroComic filtros = new();
 
+    private string errorAño = "";
+
 
     [Parameter] public EventCallback<FiltroComic> OnFiltrar { get; set; }
 
 
     private async Task AplicarFiltro()
     {
+        filtros.Año = filtros.Año.Trim();
+
+        // El año puede quedar vacío (no filtra por año),
+        // pero si se escribe debe tener exactamente 4 números.
+        bool añoValido =
+            filtros.Año == "" ||
+            (filtros.Año.Length == 4 &&
+             filtros.Año.All(c => c >= '0' && c <= '9'));
+
+        if (!añoValido)
+        {
+            errorAño = "El año debe tener exactamente 4 números.";
+            return;
+        }
+
+        errorAño = "";
+
         await OnFiltrar.InvokeAsync(filtros);
     }
 

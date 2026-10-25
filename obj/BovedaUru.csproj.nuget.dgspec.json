@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\elman\\BovedaUru\\BovedaUru.csproj": {}
+    "C:\\Users\\elman\\BovedaUru\\BovedaUru.csproj": {}
   },
   "projects": {
-    "c:\\Users\\elman\\BovedaUru\\BovedaUru.csproj": {
+    "C:\\Users\\elman\\BovedaUru\\BovedaUru.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\elman\\BovedaUru\\BovedaUru.csproj",
+        "projectUniqueName": "C:\\Users\\elman\\BovedaUru\\BovedaUru.csproj",
         "projectName": "BovedaUru",
-        "projectPath": "c:\\Users\\elman\\BovedaUru\\BovedaUru.csproj",
+        "projectPath": "C:\\Users\\elman\\BovedaUru\\BovedaUru.csproj",
         "packagesPath": "C:\\Users\\elman\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\elman\\BovedaUru\\obj\\",
+        "outputPath": "C:\\Users\\elman\\BovedaUru\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\elman\\AppData\\Roaming\\NuGet\\NuGet.Config",
