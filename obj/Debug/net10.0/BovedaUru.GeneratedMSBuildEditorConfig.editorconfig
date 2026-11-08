@@ -59,6 +59,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb3VudGVyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/elman/BovedaUru/Components/Pages/DetalleComics.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xEZXRhbGxlQ29taWNzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/elman/BovedaUru/Components/Pages/Enciclopedia.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFbmNpY2xvcGVkaWEucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 

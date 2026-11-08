@@ -34,8 +34,6 @@ c:\Users\elman\BovedaUru\obj\Debug\net10.0\scopedcss\Components\Layout\Reconnect
 c:\Users\elman\BovedaUru\obj\Debug\net10.0\scopedcss\bundle\BovedaUru.styles.css
 c:\Users\elman\BovedaUru\obj\Debug\net10.0\scopedcss\projectbundle\BovedaUru.bundle.scp.css
 c:\Users\elman\BovedaUru\obj\Debug\net10.0\compressed\s8pqub87vw-{0}-abdmv1u4y3-abdmv1u4y3.gz
-c:\Users\elman\BovedaUru\obj\Debug\net10.0\compressed\0db3sudn52-{0}-cd06xom9c5-cd06xom9c5.gz
-c:\Users\elman\BovedaUru\obj\Debug\net10.0\compressed\ckaio6sqta-{0}-vmftroxvhh-vmftroxvhh.gz
 c:\Users\elman\BovedaUru\obj\Debug\net10.0\compressed\8porux9258-{0}-hbsl3c3bgm-hbsl3c3bgm.gz
 c:\Users\elman\BovedaUru\obj\Debug\net10.0\compressed\odgupnj5yp-{0}-hbsl3c3bgm-hbsl3c3bgm.gz
 c:\Users\elman\BovedaUru\obj\Debug\net10.0\staticwebassets.build.json
@@ -93,4 +91,6 @@ C:\Users\elman\BovedaUru\obj\Debug\net10.0\compressed\2igyi0hizj-{0}-notf2xhcfb-
 C:\Users\elman\BovedaUru\obj\Debug\net10.0\compressed\jdfwf368tc-{0}-h1s4sie4z3-h1s4sie4z3.gz
 C:\Users\elman\BovedaUru\obj\Debug\net10.0\compressed\o8c1g5w1c7-{0}-63fj8s7r0e-63fj8s7r0e.gz
 C:\Users\elman\BovedaUru\obj\Debug\net10.0\compressed\z0ldyvmk34-{0}-0j3bgjxly4-0j3bgjxly4.gz
-C:\Users\elman\BovedaUru\obj\Debug\net10.0\compressed\i2oq2td2r5-{0}-g4wyn9zpsh-g4wyn9zpsh.gz
+C:\Users\elman\BovedaUru\obj\Debug\net10.0\compressed\0db3sudn52-{0}-xmryko9e6j-xmryko9e6j.gz
+C:\Users\elman\BovedaUru\obj\Debug\net10.0\compressed\ckaio6sqta-{0}-7d17r9czpp-7d17r9czpp.gz
+C:\Users\elman\BovedaUru\obj\Debug\net10.0\compressed\i2oq2td2r5-{0}-9fv7ds57ok-9fv7ds57ok.gz

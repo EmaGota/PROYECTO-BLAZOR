@@ -1,0 +1,68 @@
+@page "/comic/{Id:int}"
+
+@using BovedaUru.Components.Modelo
+@using BovedaUru.Servicios
+@inject ComicServicio Servicio
+
+<PageTitle>@(comic?.Titulo ?? "Cómic") - La Boveda de Uru</PageTitle>
+
+<BarraNav/>
+
+<main class="catalogo_contenedor detalle_contenedor">
+
+    <section class="catalogo">
+
+        @if (comic is null)
+        {
+            <h2>No se encontró el cómic</h2>
+            <a href="catalogo">← Volver al catálogo</a>
+        }
+        else
+        {
+            <h2>@comic.Titulo</h2>
+
+            <div class="detalle">
+
+                <img class="detalle-img" src="@comic.Imagen" alt="@comic.Titulo" />
+
+                <div class="detalle-info">
+                    <p>@comic.Editorial - @comic.Año</p>
+                    <p>@comic.Descripcion</p>
+
+                    <h3>Leer en:</h3>
+
+                    @if (comic.Enlaces.Count == 0)
+                    {
+                        <p>Aún no hay enlaces disponibles.</p>
+                    }
+                    else
+                    {
+                        <ul>
+                            @foreach (var e in comic.Enlaces)
+                            {
+                                <li><a href="@e.Url" target="_blank" rel="noopener noreferrer">@e.Nombre</a></li>
+                            }
+                        </ul>
+                    }
+
+                    <a href="catalogo">← Volver al catálogo</a>
+                </div>
+
+            </div>
+        }
+
+    </section>
+
+</main>
+
+@code
+{
+    [Parameter] public int Id { get; set; }
+
+    private Comic? comic;
+
+    protected override void OnParametersSet()
+    {
+        comic = Servicio.ObtenerPorId(Id);
+    }
+}

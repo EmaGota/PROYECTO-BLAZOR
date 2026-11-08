@@ -1,20 +1,19 @@
-<article class="personaje_tarjeta">
+<a href="comic/@Id" class="tarj-link">
+    <article class="personaje_tarjeta">
 
-    <img src="@Imagen" alt="@Titulo">
+        <img src="@Imagen" alt="@Titulo">
 
-    <div class="info_personaje">
+        <div class="info_personaje">
+            <h3>@Titulo</h3>
+            <p>@Editorial - @Año</p>
+        </div>
 
-        <h3>@Titulo</h3>
-
-        <p>@Editorial - @Año</p>
-
-    </div>
-
-</article>
-
+    </article>
+</a>
 
 @code
 {
+    [Parameter] public int Id { get; set; }
 
     [Parameter] public string Titulo { get; set; } = "";
 
@@ -23,5 +22,4 @@
     [Parameter] public int Año { get; set; }
 
     [Parameter] public string Imagen { get; set; } = "";
-
 }

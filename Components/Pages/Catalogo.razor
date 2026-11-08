@@ -1,6 +1,8 @@
 @page "/catalogo"
 
+@using BovedaUru.Servicios
 @using BovedaUru.Components.Modelo
+@inject ComicServicio Servicio
 
 <PageTitle>Catalogo de historias - La Boveda de Uru</PageTitle>
 
@@ -19,6 +21,7 @@
             @foreach (var comic in comicsFiltrados)
             {
                 <TarjComic
+                    Id="comic.Id"
                     Imagen="@comic.Imagen"
                     Titulo="@comic.Titulo"
                     Editorial="@comic.Editorial"
@@ -121,6 +124,7 @@
 
    protected override void OnInitialized()
    {
+       comics = Servicio.ObtenerTodos();
        comicsFiltrados = comics.ToList();
    }
 

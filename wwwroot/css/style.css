@@ -1,9 +1,3 @@
-/* =====================================================
-   La Boveda de Uru - style.css
-   Ubicacion: wwwroot/css/style.css
-   Para cambiar la paleta, edita las variables de abajo.
-   ===================================================== */
-
 :root {
     --negro: #000000;
     --rojo-oscuro: #8b0000;
@@ -24,14 +18,6 @@ h2 {
     color: var(--texto);
     margin-bottom: 1rem;
 }
-
-
-/* =====================================================
-   HEADER (BarraNav)
-   Fondo negro y 4 botones: Inicio, Catalogo,
-   Enciclopedia e Iniciar Sesion.
-   Al pasar el cursor, el boton se pone rojo oscuro.
-   ===================================================== */
 
 .navbar {
     background-color: var(--negro) !important;
@@ -75,11 +61,6 @@ h2 {
     }
 }
 
-
-/* =====================================================
-   PAGINA DE INICIO
-   ===================================================== */
-
 .pagina_inicio {
     min-height: calc(100vh - 64px);
     padding: 2rem 1rem 3rem;
@@ -110,11 +91,6 @@ h2 {
     line-height: 1.7;
     margin-bottom: 0;
 }
-
-
-/* =====================================================
-   CARRUSEL
-   ===================================================== */
 
 .carrusel {
     display: flex;
@@ -185,11 +161,6 @@ h2 {
     background-color: var(--rojo-oscuro);
 }
 
-
-/* =====================================================
-   CATALOGO
-   ===================================================== */
-
 .catalogo_contenedor {
     display: flex;
     align-items: flex-start;
@@ -248,11 +219,6 @@ h2 {
     gap: 1.25rem;
 }
 
-
-/* =====================================================
-   TARJETAS (comics y personajes)
-   ===================================================== */
-
 .personaje_tarjeta {
     background-color: var(--superficie);
     border: 1px solid var(--borde);
@@ -290,19 +256,11 @@ h2 {
     color: var(--texto-suave);
 }
 
-
-/* =====================================================
-   ENCICLOPEDIA
-   ===================================================== */
-
 .contenedor-enciclopedia {
     max-width: 1300px;
     margin: 0 auto;
     padding: 2rem 1rem 3rem;
 }
-
-/* La clase se usa en la seccion y en cada campo; solo la
-   seccion (la que contiene la fila) lleva el recuadro. */
 .contenedor-enciclopedia > .filtro_enciclopedia {
     background-color: var(--superficie);
     border: 1px solid var(--borde);
@@ -337,14 +295,13 @@ h2 {
     flex: 0 0 auto;
 }
 
+.catalogo_contenedor.detalle_contenedor {
+    display: block;
+}
+
 .enciclopedia {
     min-width: 0;
 }
-
-
-/* =====================================================
-   INICIO DE SESION
-   ===================================================== */
 
 .InicioContenedor {
     display: flex;
@@ -401,11 +358,6 @@ h2 {
     text-align: center;
     color: var(--texto-suave);
 }
-
-
-/* =====================================================
-   RESPONSIVE
-   ===================================================== */
 
 @media (max-width: 768px) {
     .catalogo_contenedor {

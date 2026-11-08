@@ -1,10 +1,13 @@
 using BovedaUru.Components;
+using BovedaUru.Servicios;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+
+builder.Services.AddSingleton<ComicServicio>();   // <- nueva línea
 
 var app = builder.Build();
 
