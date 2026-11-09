@@ -1,0 +1,26 @@
+@using BovedaUru.Servicios
+@inject FavoritosEstado Estado
+@implements IDisposable
+
+<button type="button" class="Favorito_B @(Favorito ? "activo" : "")" @onclick="Alternar">
+    @(Favorito ? "En favoritos" : "Agregar a favoritos")
+</button>
+
+
+@code
+{
+    [Parameter, EditorRequired] public int Comic {get; set;}
+    [Parameter] public EventCallback<bool> OnCambio {get; set;}
+    private bool Favorito => Estado.EsFavorito(Comic);
+
+    protected override void OnInitialized() => Estado.OnCambio += Actualizar;
+
+    private async Task Alternar()
+    {
+        Estado.Alternar(Comic);
+        await OnCambio.InvokeAsync(Favorito);
+    }
+
+    private void Actualizar() => InvokeAsync(StateHasChanged);
+    public void Dispose() => Estado.OnCambio -= Actualizar;
+}

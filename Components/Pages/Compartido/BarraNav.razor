@@ -1,3 +1,10 @@
+@using BovedaUru.Servicios
+@inject FavoritosEstado Estado
+@implements IDisposable
+
+
+
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-black">
     <div class="container-fluid">
         <a class="navbar-brand" href="/">La Boveda de Uru</a>
@@ -40,7 +47,14 @@
 
             </ul>
 
-
+            <span class="Contador de favorios">@Estado.Total</span>
         </div>
     </div>
 </nav>
+@code 
+{
+    protected override void OnInitialized() => Estado.OnCambio += Actualizar;
+
+    private void Actualizar() => InvokeAsync(StateHasChanged);
+    public void Dispose() => Estado.OnCambio -= Actualizar;
+}

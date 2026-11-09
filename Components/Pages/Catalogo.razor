@@ -4,6 +4,8 @@
 @using BovedaUru.Components.Modelo
 @inject ComicServicio Servicio
 
+@inject NavigationManager Navi
+
 <PageTitle>Catalogo de historias - La Boveda de Uru</PageTitle>
 
 <BarraNav/>
@@ -15,6 +17,9 @@
     <section class="catalogo">
 
         <h2>Lista de Comics</h2>
+
+        <button type ="button" @onclick ="AbrirRandom">Sorprendeme</button>
+
 
         <div class="lista_catalogo">
 
@@ -35,7 +40,7 @@
 </main>
 @code 
 {
-   private List<Comic> comics = new()
+    private List<Comic> comics = new()
    {
        new Comic
        {
@@ -119,37 +124,47 @@
    };
 
 
-   private List<Comic> comicsFiltrados = new();
+    private List<Comic> comicsFiltrados = new();
 
 
-   protected override void OnInitialized()
-   {
-       comics = Servicio.ObtenerTodos();
-       comicsFiltrados = comics.ToList();
-   }
+    protected override void OnInitialized()
+    {
+        comics = Servicio.ObtenerTodos();
+        comicsFiltrados = comics.ToList();
+    }
 
 
-   private void Filtrar(FiltroComic filtros)
-   {
-       string personajeBuscado =
-           filtros.Personaje.ToLower().Trim();
+    private void Filtrar(FiltroComic filtros)
+    {
+        string personajeBuscado =
+            filtros.Personaje.ToLower().Trim();
 
-       string grupoBuscado =
-           filtros.Grupo.ToLower().Trim();
+        string grupoBuscado =
+            filtros.Grupo.ToLower().Trim();
 
-       string editorialBuscada =
-           filtros.Editorial.ToLower().Trim();
+        string editorialBuscada =
+            filtros.Editorial.ToLower().Trim();
 
 
-       comicsFiltrados = comics
-           .Where(comic =>
-               FiltrarPersonaje(comic, personajeBuscado) &&
-               FiltrarGrupo(comic, grupoBuscado) &&
-               FiltrarAño(comic, filtros.Año) &&
-               FiltrarEditorial(comic, editorialBuscada)
-           )
-           .ToList();
-   }
+        comicsFiltrados = comics
+            .Where(comic =>
+                FiltrarPersonaje(comic, personajeBuscado) &&
+                FiltrarGrupo(comic, grupoBuscado) &&
+                FiltrarAño(comic, filtros.Año) &&
+                FiltrarEditorial(comic, editorialBuscada)
+            )
+            .ToList();
+    }
+
+
+    private void AbrirRandom()
+    {
+        var conPagina = comics.Where(c => c.Id > 0).ToList();
+        if(conPagina.Count == 0) return;
+
+        var elegido = conPagina[Random.Shared.Next(conPagina.Count)];
+        Navi.NavigateTo($"/Comic/{elegido.Id}");
+    }
 
 
    private bool FiltrarPersonaje(
