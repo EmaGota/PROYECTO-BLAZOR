@@ -1,15 +1,23 @@
 is_global = true
 build_property.TargetFramework = net10.0
-build_property.TargetFrameworkIdentifier = .NETCoreApp
-build_property.TargetFrameworkVersion = v10.0
+build_property.TargetFramework = net10.0
+build_property.TargetPlatformMinVersion = 
 build_property.TargetPlatformMinVersion = 
 build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
 build_property.ProjectTypeGuids = 
 build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
 build_property.PlatformNeutralAssembly = 
 build_property.EnforceExtendedAnalyzerRules = 
-build_property.EntryPointFilePath = 
+build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.TargetFrameworkIdentifier = .NETCoreApp
+build_property.TargetFrameworkVersion = v10.0
+build_property.EntryPointFilePath = 
 build_property.RootNamespace = BovedaUru
 build_property.RootNamespace = BovedaUru
 build_property.ProjectDir = C:\Users\elman\BovedaUru\
@@ -35,8 +43,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb21wYXJ0aWRvXEJhcnJhTmF2LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/elman/BovedaUru/Components/Pages/Compartido/BotonCompartir.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb21wYXJ0aWRvXEJvdG9uQ29tcGFydGlyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/elman/BovedaUru/Components/Pages/Compartido/Carrusel.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb21wYXJ0aWRvXENhcnJ1c2VsLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/elman/BovedaUru/Components/Pages/Compartido/EnlacesLectura.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb21wYXJ0aWRvXEVubGFjZXNMZWN0dXJhLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/elman/BovedaUru/Components/Pages/Compartido/Filtro.razor]
@@ -45,10 +61,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/elman/BovedaUru/Components/Pages/Compartido/Navega.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb21wYXJ0aWRvXE5hdmVnYS5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/elman/BovedaUru/Components/Pages/Compartido/TarjComic.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb21wYXJ0aWRvXFRhcmpDb21pYy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/elman/BovedaUru/Components/Pages/Compartido/TarjPersonaje.razor]
@@ -114,3 +126,7 @@ build_metadata.AdditionalFiles.CssScope = b-sq2cdvm0zm
 [C:/Users/elman/BovedaUru/Components/Layout/ReconnectModal.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcUmVjb25uZWN0TW9kYWwucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-oxr1e3dn62
+
+[C:/Users/elman/BovedaUru/Components/Pages/Compartido/TarjComic.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb21wYXJ0aWRvXFRhcmpDb21pYy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-ri62b7b235

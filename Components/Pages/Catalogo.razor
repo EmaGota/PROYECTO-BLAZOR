@@ -1,43 +1,51 @@
 @page "/catalogo"
 
-@using BovedaUru.Servicios
 @using BovedaUru.Components.Modelo
+@using BovedaUru.Servicios
 @inject ComicServicio Servicio
-
 @inject NavigationManager Navi
 
 <PageTitle>Catalogo de historias - La Boveda de Uru</PageTitle>
 
-<BarraNav/>
+<div class="row g-4">
 
-<main class="catalogo_contenedor">
+    <aside class="col-12 col-lg-3" aria-label="Filtros del catálogo">
+        <Filtro OnFiltrar="Filtrar" />
+    </aside>
 
-    <Filtro OnFiltrar="Filtrar"/>
+    <section class="col-12 col-lg-9" aria-labelledby="titulo-catalogo">
 
-    <section class="catalogo">
-
-        <h2>Lista de Comics</h2>
-
-        <button type ="button" @onclick ="AbrirRandom">Sorprendeme</button>
-
-
-        <div class="lista_catalogo">
-
-            @foreach (var comic in comicsFiltrados)
-            {
-                <TarjComic
-                    Id="comic.Id"
-                    Imagen="@comic.Imagen"
-                    Titulo="@comic.Titulo"
-                    Editorial="@comic.Editorial"
-                    Año="@comic.Año"/>
-            }
-
+        <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+            <h1 id="titulo-catalogo" class="h2 mb-0">Lista de Comics</h1>
+            <div class="d-flex gap-2">
+                <button type="button" class="btn btn-outline-danger btn-sm" @onclick="AbrirRandom">Cómic al azar</button>
+                <a class="btn btn-danger btn-sm" href="sugerir">Sugerir un cómic</a>
+            </div>
         </div>
 
-    </section>
+        @if (comicsFiltrados.Count == 0)
+        {
+            <MensajeVacio Texto="Ningún cómic coincide con los filtros." />
+        }
+        else
+        {
+            <ul class="row row-cols-2 row-cols-md-3 row-cols-xl-4 g-3 list-unstyled">
+                @foreach (var comic in comicsFiltrados)
+                {
+                    <li class="col">
+                        <TarjComic
+                            Id="comic.Id"
+                            Imagen="@comic.Imagen"
+                            Titulo="@comic.Titulo"
+                            Editorial="@comic.Editorial"
+                            Año="@comic.Año" />
+                    </li>
+                }
+            </ul>
+        }
 
-</main>
+    </section>
+</div>
 @code 
 {
     private List<Comic> comics = new()
@@ -127,7 +135,7 @@
     private List<Comic> comicsFiltrados = new();
 
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
         comics = Servicio.ObtenerTodos();
         comicsFiltrados = comics.ToList();

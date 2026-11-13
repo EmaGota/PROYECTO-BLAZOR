@@ -1,15 +1,13 @@
-<a href="comic/@Id" class="tarj-link">
-    <article class="personaje_tarjeta">
-
-        <img src="@Imagen" alt="@Titulo">
-
-        <div class="info_personaje">
-            <h3>@Titulo</h3>
-            <p>@Editorial - @Año</p>
-        </div>
-
-    </article>
-</a>
+@if (Id > 0)
+{
+    <a href="comic/@Id" class="tarj-link">
+        @Tarjeta
+    </a>
+}
+else
+{
+    @Tarjeta
+}
 
 @code
 {
@@ -22,4 +20,15 @@
     [Parameter] public int Año { get; set; }
 
     [Parameter] public string Imagen { get; set; } = "";
+
+    private RenderFragment Tarjeta => @<article class="personaje_tarjeta card h-100">
+
+        <img src="@Imagen" alt="Portada de @Titulo" class="card-img-top" loading="lazy">
+
+        <div class="info_personaje card-body">
+            <h3 class="card-title h6">@Titulo</h3>
+            <p class="card-text small mb-0">@Editorial - <time datetime="@Año">@Año</time></p>
+        </div>
+
+    </article>;
 }

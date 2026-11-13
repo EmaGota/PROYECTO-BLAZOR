@@ -1,0 +1,51 @@
+@inject IJSRuntime JS
+@inject NavigationManager Nav
+@implements IAsyncDisposable
+
+<button type="button" class="btn btn-outline-danger btn-sm btn-compartir" @onclick="Copiar">
+    @(copiado ? "¡Enlace copiado!" : "Copiar enlace")
+</button>
+
+@code
+{
+    [Parameter] public string? Url { get; set; }
+
+    private IJSObjectReference? modulo;
+    private bool copiado;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+{
+    if (!firstRender) return;
+
+    try
+    {
+        modulo = await JS.InvokeAsync<IJSObjectReference>("import", "./js/utilidades.js");
+    }
+    catch (JSException)
+    {
+        modulo = null;
+    }
+}
+
+    private async Task Copiar()
+    {
+        if (modulo is null) return;
+
+        copiado = await modulo.InvokeAsync<bool>("copiarTexto", Url ?? Nav.Uri);
+        StateHasChanged();
+
+        await Task.Delay(2000);
+        copiado = false;
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        if (modulo is not null)
+        {
+            try { await modulo.DisposeAsync(); }
+            catch (JSDisconnectedException) { }
+        }
+    }
+
+    
+}

@@ -1,0 +1,23 @@
+@using BovedaUru.Components.Modelo
+
+<h3>@Titulo</h3>
+
+@if (Enlaces.Count == 0)
+{
+    <p>Aún no hay enlaces disponibles.</p>
+}
+else
+{
+    <ul class="enlaces">
+        @foreach (var e in Enlaces)
+        {
+            <li><a href="@e.Url" target="_blank" rel="noopener noreferrer">@e.Nombre</a></li>
+        }
+    </ul>
+}
+
+@code
+{
+    [Parameter] public string Titulo { get; set; } = "Leer en:";
+    [Parameter, EditorRequired] public List<EnlacesComic> Enlaces { get; set; } = new();
+}

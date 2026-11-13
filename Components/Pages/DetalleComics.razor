@@ -1,59 +1,48 @@
 @page "/comic/{Id:int}"
-
+@using BovedaUru.Components.Pages
 @using BovedaUru.Components.Modelo
 @using BovedaUru.Servicios
 @inject ComicServicio Servicio
 
 <PageTitle>@(comic?.Titulo ?? "Cómic") - La Boveda de Uru</PageTitle>
 
-<BarraNav/>
-
-<main class="catalogo_contenedor detalle_contenedor">
-
-    <section class="catalogo">
-
-        @if (comic is null)
-        {
-            <h2>No se encontró el cómic</h2>
-            <a href="catalogo">← Volver al catálogo</a>
-        }
-        else
-        {
-            <h2>@comic.Titulo</h2>
-
-            <div class="detalle">
-
-                <img class="detalle-img" src="@comic.Imagen" alt="@comic.Titulo" />
-
-                <div class="detalle-info">
-                    <p>@comic.Editorial - @comic.Año</p>
-                    <p>@comic.Descripcion</p>
-
-                    <h3>Leer en:</h3>
-
-                    @if (comic.Enlaces.Count == 0)
-                    {
-                        <p>Aún no hay enlaces disponibles.</p>
-                    }
-                    else
-                    {
-                        <ul>
-                            @foreach (var e in comic.Enlaces)
-                            {
-                                <li><a href="@e.Url" target="_blank" rel="noopener noreferrer">@e.Nombre</a></li>
-                            }
-                        </ul>
-                    }
-
-                    <a href="catalogo">← Volver al catálogo</a>
-                </div>
-
-            </div>
-        }
-
+@if (comic is null)
+{
+    <section>
+        <h1 class="h2">No se encontró el cómic</h1>
+        <a href="catalogo">← Volver al catálogo</a>
     </section>
+}
+else
+{
+    <article class="row g-4">
 
-</main>
+        <figure class="col-12 col-md-4 text-center mb-0">
+            <img class="img-fluid rounded shadow" src="@comic.Imagen" alt="Portada de @comic.Titulo" />
+        </figure>
+
+        <div class="col-12 col-md-8">
+
+            <header>
+                <h1 class="h2">@comic.Titulo</h1>
+                <p class="text-muted">@comic.Editorial - <time datetime="@comic.Año">@comic.Año</time></p>
+            </header>
+
+            <p>@comic.Descripcion</p>
+
+            <EnlacesLectura Enlaces="comic.Enlaces" />
+
+            <div class="d-flex flex-wrap gap-2 my-3">
+               <Favoritos Comic="comic.Id" />
+            <BotonCompartir />
+</div>
+
+            <a href="catalogo">← Volver al catálogo</a>
+
+        </div>
+
+    </article>
+}
 
 @code
 {
