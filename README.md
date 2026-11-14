@@ -4,8 +4,7 @@
 
 Catálogo web de cómics hecho con **Blazor Server** y **Entity Framework Core**: filtros, fichas con enlaces de lectura, favoritos y administración con CRUD.
 
-**Demo:** https://<nombre>.onrender.com
-*(el servicio gratuito se duerme: el primer acceso puede tardar unos segundos)*
+**Demo:** https://localhost:5026*
 
 ## Capturas
 
