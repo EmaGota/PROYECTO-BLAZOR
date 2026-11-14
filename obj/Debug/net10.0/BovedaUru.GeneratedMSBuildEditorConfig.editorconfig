@@ -35,6 +35,10 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBcHAucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/elman/BovedaUru/Components/Pages/AdminComics.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBZG1pbkNvbWljcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/elman/BovedaUru/Components/Pages/Catalogo.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDYXRhbG9nby5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
@@ -59,8 +63,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb21wYXJ0aWRvXEZpbHRyby5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/elman/BovedaUru/Components/Pages/Compartido/MensajeVacio.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb21wYXJ0aWRvXE1lbnNhamVWYWNpby5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/elman/BovedaUru/Components/Pages/Compartido/Navega.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb21wYXJ0aWRvXE5hdmVnYS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/elman/BovedaUru/Components/Pages/Compartido/Paginador.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb21wYXJ0aWRvXFBhZ2luYWRvci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/elman/BovedaUru/Components/Pages/Compartido/TarjPersonaje.razor]
@@ -97,6 +109,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/elman/BovedaUru/Components/Pages/NotFound.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xOb3RGb3VuZC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/elman/BovedaUru/Components/Pages/RecomendarComic.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xSZWNvbWVuZGFyQ29taWMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/elman/BovedaUru/Components/Pages/Weather.razor]

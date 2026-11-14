@@ -1,0 +1,186 @@
+@page "/admin/comics"
+
+@using BovedaUru.Components.Modelo
+@using BovedaUru.Servicios
+@inject ComicServicio Servicio
+@inject IJSRuntime JS
+
+<PageTitle>Administrar cómics - La Boveda de Uru</PageTitle>
+
+<section aria-labelledby="titulo-admin">
+
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+        <h1 id="titulo-admin" class="h2 mb-0">Administrar cómics</h1>
+        <button type="button" class="btn btn-danger" @onclick="Nuevo">Nuevo cómic</button>
+    </div>
+
+    @if (editando is not null)
+    {
+        <EditForm Model="editando" OnValidSubmit="Guardar" class="card card-body mb-4">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+
+            <div class="row g-3">
+                <div class="col-12 col-md-6">
+                    <label for="titulo" class="form-label">Título</label>
+                    <InputText id="titulo" class="form-control" @bind-Value="editando.Titulo" />
+                    <ValidationMessage For="() => editando.Titulo" />
+                </div>
+                <div class="col-12 col-md-6">
+                    <label for="personaje" class="form-label">Personaje</label>
+                    <InputText id="personaje" class="form-control" @bind-Value="editando.Personaje" />
+                    <ValidationMessage For="() => editando.Personaje" />
+                </div>
+                <div class="col-12 col-md-6">
+                    <label for="grupo" class="form-label">Grupo</label>
+                    <InputText id="grupo" class="form-control" @bind-Value="editando.Grupo" />
+                </div>
+                <div class="col-12 col-md-6">
+                    <label for="editorial" class="form-label">Editorial</label>
+                    <InputText id="editorial" class="form-control" @bind-Value="editando.Editorial" />
+                    <ValidationMessage For="() => editando.Editorial" />
+                </div>
+                <div class="col-12 col-md-4">
+                    <label for="anio" class="form-label">Año</label>
+                    <InputNumber id="anio" class="form-control" @bind-Value="editando.Año" />
+                    <ValidationMessage For="() => editando.Año" />
+                </div>
+                <div class="col-12 col-md-8">
+                    <label for="imagen" class="form-label">Imagen (ej. images/portada.jpg)</label>
+                    <InputText id="imagen" class="form-control" @bind-Value="editando.Imagen" />
+                    <ValidationMessage For="() => editando.Imagen" />
+                </div>
+                <div class="col-12">
+                    <label for="descripcion" class="form-label">Descripción</label>
+                    <InputTextArea id="descripcion" class="form-control" rows="3" @bind-Value="editando.Descripcion" />
+                </div>
+            </div>
+
+            <h2 class="h5 mt-4">Enlaces de lectura</h2>
+            @foreach (var e in editando.Enlaces)
+            {
+                <div class="row g-2 mb-2">
+                    <div class="col-5"><InputText class="form-control" placeholder="Nombre" @bind-Value="e.Nombre" /></div>
+                    <div class="col-5"><InputText class="form-control" placeholder="https://..." @bind-Value="e.Url" /></div>
+                    <div class="col-2">
+                        <button type="button" class="btn btn-outline-danger w-100" @onclick="() => editando.Enlaces.Remove(e)">Quitar</button>
+                    </div>
+                </div>
+            }
+            <div>
+                <button type="button" class="btn btn-outline-secondary btn-sm" @onclick="AgregarEnlace">+ Agregar enlace</button>
+            </div>
+
+            <div class="d-flex gap-2 mt-4">
+                <button type="submit" class="btn btn-danger">Guardar</button>
+                <button type="button" class="btn btn-outline-secondary" @onclick="Cancelar">Cancelar</button>
+            </div>
+        </EditForm>
+    }
+
+    <div class="mb-3">
+        <label for="buscar" class="form-label visually-hidden">Buscar</label>
+        <input id="buscar" class="form-control" placeholder="Buscar por título, personaje, grupo o editorial"
+               @bind="texto" @bind:event="oninput" @bind:after="Buscar" />
+    </div>
+
+    @if (resultado.Items.Count == 0)
+    {
+        <MensajeVacio Texto="No se encontraron cómics." />
+    }
+    else
+    {
+        <div class="table-responsive">
+            <table class="table table-dark table-striped align-middle">
+                <thead>
+                    <tr>
+                        <th>Título</th>
+                        <th>Personaje</th>
+                        <th>Editorial</th>
+                        <th>Año</th>
+                        <th class="text-end">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var c in resultado.Items)
+                    {
+                        <tr>
+                            <td>@c.Titulo</td>
+                            <td>@c.Personaje</td>
+                            <td>@c.Editorial</td>
+                            <td>@c.Año</td>
+                            <td class="text-end">
+                                <button type="button" class="btn btn-sm btn-outline-light" @onclick="() => Editar(c.Id)">Editar</button>
+                                <button type="button" class="btn btn-sm btn-outline-danger" @onclick="() => Eliminar(c)">Eliminar</button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <p class="small text-muted">@resultado.Total resultado(s) - página @resultado.Pagina de @resultado.TotalPaginas</p>
+
+        <Paginador Pagina="pagina" TotalPaginas="resultado.TotalPaginas" OnCambioPagina="CambiarPagina" />
+    }
+
+</section>
+
+@code
+{
+    private const int TamanoPagina = 5;
+
+    private ResultadoPaginado<Comic> resultado = new(new List<Comic>(), 0, 1, TamanoPagina);
+    private string texto = "";
+    private int pagina = 1;
+    private Comic? editando;
+
+    protected override async Task OnInitializedAsync() => await Cargar();
+
+    private async Task Cargar() =>
+        resultado = await Servicio.BuscarAsync(texto, pagina, TamanoPagina);
+
+    private async Task Buscar()
+    {
+        pagina = 1;
+        await Cargar();
+    }
+
+    private async Task CambiarPagina(int p)
+    {
+        pagina = p;
+        await Cargar();
+    }
+
+    private void Nuevo() => editando = new Comic { Año = DateTime.Now.Year };
+
+    private async Task Editar(int id) => editando = await Servicio.ObtenerPorIdAsync(id);
+
+    private void Cancelar() => editando = null;
+
+    private void AgregarEnlace() => editando!.Enlaces.Add(new EnlacesComic());
+
+    private async Task Guardar()
+    {
+        if (editando!.Id == 0)
+            await Servicio.CrearAsync(editando);
+        else
+            await Servicio.ActualizarAsync(editando);
+
+        editando = null;
+        await Cargar();
+    }
+
+    private async Task Eliminar(Comic c)
+    {
+        if (!await JS.InvokeAsync<bool>("confirm", $"¿Eliminar \"{c.Titulo}\"?"))
+            return;
+
+        await Servicio.EliminarAsync(c.Id);
+
+        if (resultado.Items.Count == 1 && pagina > 1)
+            pagina--;
+
+        await Cargar();
+    }
+}

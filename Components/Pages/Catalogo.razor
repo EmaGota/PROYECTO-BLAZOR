@@ -137,7 +137,7 @@
 
     protected override async Task OnInitializedAsync()
     {
-        comics = Servicio.ObtenerTodos();
+        comics = await Servicio.ObtenerTodosAsync();
         comicsFiltrados = comics.ToList();
     }
 

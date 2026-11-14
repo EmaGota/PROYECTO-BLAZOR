@@ -6,7 +6,11 @@
 
 <PageTitle>@(comic?.Titulo ?? "Cómic") - La Boveda de Uru</PageTitle>
 
-@if (comic is null)
+@if (cargando)
+{
+    <p>Cargando...</p>
+}
+else if (comic is null)
 {
     <section>
         <h1 class="h2">No se encontró el cómic</h1>
@@ -49,9 +53,12 @@ else
     [Parameter] public int Id { get; set; }
 
     private Comic? comic;
+    private bool cargando = true;
 
-    protected override void OnParametersSet()
+    protected override async Task OnParametersSetAsync()
     {
-        comic = Servicio.ObtenerPorId(Id);
+        cargando = true;
+        comic = await Servicio.ObtenerPorIdAsync(Id);
+        cargando = false;
     }
 }

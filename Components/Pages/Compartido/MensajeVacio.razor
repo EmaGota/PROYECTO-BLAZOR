@@ -1,0 +1,10 @@
+<div class="MensajeVacio">
+    <p>@Texto</p>
+    @ChildContent
+</div>
+
+@code
+{
+    [Parameter] public string Texto { get; set; } = "No hay resultados.";
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+}

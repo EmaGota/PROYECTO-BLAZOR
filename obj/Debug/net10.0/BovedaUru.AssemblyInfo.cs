@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BovedaUru")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3d5b0754ce9ca38b4a807075915b82525a15f0cc")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9847670063b8a5d73128f8127cbc655d51c1e197")]
 [assembly: System.Reflection.AssemblyProductAttribute("BovedaUru")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BovedaUru")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
