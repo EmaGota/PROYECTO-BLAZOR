@@ -6,11 +6,6 @@ Catálogo web de cómics hecho con **Blazor Server** y **Entity Framework Core**
 
 **Demo:** https://localhost:5026*
 
-## Capturas
-
-![Inicio](images/BovedaUru_inicio.png)
-![Catálogo](images/BovedaUru_catalogo.png)
-
 ## Características
 
 - Catálogo con filtros, ficha de cada cómic (`/comic/{id}`) y navegación programática.
