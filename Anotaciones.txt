@@ -1,0 +1,93 @@
+// REQUERIMIENTOS POR UNIDAD - LA BOVEDA DE URU
+=============================================
+
+UNIDAD 1 - Blazor: componentes, formularios, routing y estado
+--------------------------------------------------------------
+[ ] Minimo 6 componentes Razor reutilizables y encapsulados
+    -> Reciben datos por [Parameter] y avisan con EventCallback.
+    -> BarraNav, Favoritos, BotonCompartir, EnlacesLectura, Filtro,
+       MensajeVacio, Paginador, TarjComic, TarjPersonaje, Carrusel.
+
+[ ] Formularios con EditForm y validacion avanzada
+    -> RecomendarComic.razor + Sugerencias.cs (IValidatableObject,
+       regex del anio, rango dinamico).
+    -> Login.razor (contrasena con regex), AdminComics.razor.
+    -> Atributos DataAnnotations en Comic.cs.
+
+[ ] Routing con parametros y navegacion programatica
+    -> DetalleComics.razor: /comic/{Id:int}.
+    -> NavigationManager.NavigateTo en Catalogo (AbrirRandom),
+       RecomendarComic y Login.
+
+[ ] State service con notificacion reactiva
+    -> FavoritosEstado.cs (evento OnCambio), registrado Scoped
+       en Program.cs.
+    -> Favoritos.razor y BarraNav.razor se suscriben y se actualizan.
+
+
+UNIDAD 2 - Interfaz: semantica, CSS, Bootstrap y JavaScript
+-----------------------------------------------------------
+[ ] HTML semantico en todos los layouts
+    -> MainLayout.razor: header, nav, main, footer.
+    -> App.razor con lang="es".
+    -> aside, section, article, figure, time en las paginas.
+
+[ ] CSS isolation en al menos 3 componentes
+    -> MainLayout.razor.css, Favoritos.razor.css,
+       TarjComic.razor.css.
+
+[ ] Diseno responsive con Bootstrap 5
+    -> App.razor (CSS y JS de Bootstrap).
+    -> Navbar colapsable en BarraNav.
+    -> Grilla row/col en Catalogo y DetalleComics.
+    -> table-responsive en AdminComics, form-control en formularios.
+
+[ ] JS interop: una funcionalidad que requiera JavaScript
+    -> BotonCompartir.razor + wwwroot/js/utilidades.js
+       (copiar enlace al portapapeles).
+    -> confirm() desde AdminComics.razor.
+
+
+UNIDAD 3 - Datos: EF Core
+-------------------------
+[ ] EF Core con SQLite o SQL Server
+    -> SQLite. Program.cs y appsettings.json
+       (Data Source=boveda.db).
+
+[ ] DbContext factory
+    -> AddDbContextFactory en Program.cs.
+    -> IDbContextFactory en ComicServicio.
+
+[ ] Al menos 2 entidades con relacion
+    -> Comic y EnlacesComic (1:N, borrado en cascada).
+    -> AppDbContext.cs y Comic.cs.
+
+[ ] Migraciones versionadas y datos de seed
+    -> Carpeta Migrations (Inicial, LimitarDescripcion).
+    -> HasData con la clase Semilla; Migrate() al iniciar.
+
+[ ] CRUD completo con paginacion y busqueda
+    -> ComicServicio: Crear, Obtener, Actualizar, Eliminar, Buscar.
+    -> AdminComics.razor (/admin/comics) + Paginador.razor.
+
+
+UNIDAD 4 - Repositorio y despliegue
+-----------------------------------
+[ ] Repositorio GitHub con historial limpio (Conventional Commits)
+    -> Formato: tipo(ambito): descripcion.
+    -> Tipos: feat, fix, docs, style, refactor, build, ci, chore.
+    -> Usar git pull --rebase; nunca push --force.
+
+[ ] CI/CD con GitHub Actions: build y deploy automatico
+    -> .github/workflows/ci-cd.yml
+    -> Build en cada push/PR a main; deploy solo desde main.
+    -> Deploy a Render con Deploy Hook (secreto
+       RENDER_DEPLOY_HOOK_URL) y Dockerfile.
+
+[ ] README.md profesional con instrucciones de instalacion
+    -> Descripcion, caracteristicas, tecnologias, requisitos,
+       instalacion, configuracion, migraciones, CI/CD, autor.
+
+[ ] Aplicacion desplegada en una URL publica
+    -> Render: https://<nombre>.onrender.com
+    -> Poner la URL real en el README (el plan gratuito se duerme).
