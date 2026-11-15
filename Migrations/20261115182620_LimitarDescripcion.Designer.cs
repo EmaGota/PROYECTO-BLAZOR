@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BovedaUru.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20261113235101_LinitarDescripcion")]
-    partial class LinitarDescripcion
+    [Migration("20261115182620_LimitarDescripcion")]
+    partial class LimitarDescripcion
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -30,6 +30,7 @@ namespace BovedaUru.Migrations
 
                     b.Property<string>("Descripcion")
                         .IsRequired()
+                        .HasMaxLength(500)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Editorial")

@@ -5,7 +5,7 @@
 namespace BovedaUru.Migrations
 {
     /// <inheritdoc />
-    public partial class LinitarDescripcion : Migration
+    public partial class LimitarDescripcion : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

@@ -18,6 +18,8 @@ public class AppDbContext : DbContext
             e.Property(c => c.Personaje).IsRequired().HasMaxLength(80);
             e.Property(c => c.Editorial).IsRequired().HasMaxLength(120);
             e.Property(c => c.Imagen).IsRequired().HasMaxLength(200);
+            e.Property(c => c.Descripcion).HasMaxLength(500);
+            e.Property(c => c.Descripcion).HasMaxLength(500);
 
             e.HasMany(c => c.Enlaces)
              .WithOne(l => l.Comic)
