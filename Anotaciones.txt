@@ -81,8 +81,7 @@ UNIDAD 4 - Repositorio y despliegue
 [ ] CI/CD con GitHub Actions: build y deploy automatico
     -> .github/workflows/ci-cd.yml
     -> Build en cada push/PR a main; deploy solo desde main.
-    -> Deploy a Render con Deploy Hook (secreto
-       RENDER_DEPLOY_HOOK_URL) y Dockerfile.
+    -> Deploy a MonsterASP y Dockerfile.
 
 [ ] README.md profesional con instrucciones de instalacion
     -> Descripcion, caracteristicas, tecnologias, requisitos,
