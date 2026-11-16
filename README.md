@@ -1,10 +1,18 @@
 # La Bóveda de Uru
 
-![CI/CD](https://github.com/EmaGota/BovedaUru/actions/workflows/ci-cd.yml/badge.svg)
+**Aplicación desplegada:** [La Bóveda de Uru](https://bovedadeuru.runasp.net)
 
-Catálogo web de cómics hecho con **Blazor Server** y **Entity Framework Core**: filtros, fichas con enlaces de lectura, favoritos y administración con CRUD.
+## CI/CD y despliegue
 
-**Demo:** https://localhost:5026*
+La aplicación está desplegada en **MonsterASP.NET**, donde se encuentra alojada y accesible mediante una URL pública.
+
+- **Plataforma de alojamiento:** MonsterASP.NET.
+- **Framework:** ASP.NET Core / Blazor Server.
+- **Integración con código:** GitHub.
+- **Compilación:** GitHub Actions.
+- **Acceso público:** https://bovedadeuru.runasp.net
+
+Para actualizar la aplicación, se envían los cambios al repositorio de GitHub y se realiza la publicación desde el panel de MonsterASP.NET mediante Git Deploy.
 
 ## Características
 
@@ -18,13 +26,17 @@ Catálogo web de cómics hecho con **Blazor Server** y **Entity Framework Core**
 
 ## Tecnologías
 
-.NET 10 · Blazor Server · EF Core + SQLite · Bootstrap 5 · GitHub Actions · Docker · Render
+.NET 10 · Blazor Server · EF Core + SQLite · Bootstrap 5 · GitHub Actions · Docker
 
 ## Requisitos
 
 - [.NET SDK 10](https://dotnet.microsoft.com/download)
 - Git
-- Herramienta de EF Core: `dotnet tool install --global dotnet-ef --version 10.*`
+- Herramienta de EF Core:
+
+```bash
+dotnet tool install --global dotnet-ef --version 10.*
+```
 
 ## Instalación y ejecución local
 
@@ -36,14 +48,17 @@ dotnet run
 ```
 
 La base de datos (`boveda.db`) se crea y se llena con datos de ejemplo al iniciar.
-Abre la URL que muestra la consola (por ejemplo, `https://localhost:5026`).
+
+Abrir la URL que muestra la consola (por ejemplo, `https://localhost:5026`).
 
 ## Configuración
 
 La cadena de conexión está en `appsettings.json`:
 
 ```json
-"ConnectionStrings": { "Default": "Data Source=boveda.db" }
+"ConnectionStrings": {
+  "Default": "Data Source=boveda.db"
+}
 ```
 
 ## Migraciones
@@ -55,18 +70,12 @@ dotnet ef database update
 
 ## Estructura
 
-```
+```text
 Components/   páginas, layout y componentes reutilizables
 Datos/        DbContext y datos de seed
 Servicios/    servicios de datos y de estado
 Migrations/   versiones del esquema
 ```
-
-## CI/CD y despliegue
-
-Cada push y pull request a `main` compila el proyecto con GitHub Actions.
-Si el build pasa en `main`, el workflow dispara el despliegue en Render
-(imagen Docker construida desde el `Dockerfile`).
 
 ## Convención de commits
 
@@ -74,4 +83,4 @@ Se usa [Conventional Commits](https://www.conventionalcommits.org/): `feat`, `fi
 
 ## Autor
 
-Emanuel Gota — https://github.com/EmaGota
+Emanuel Gota — [GitHub](https://github.com/EmaGota)
