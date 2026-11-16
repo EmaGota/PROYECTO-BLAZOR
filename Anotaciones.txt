@@ -89,5 +89,5 @@ UNIDAD 4 - Repositorio y despliegue
        instalacion, configuracion, migraciones, CI/CD, autor.
 
 [ ] Aplicacion desplegada en una URL publica
-    -> Render: https://<nombre>.onrender.com
+    -> MonsterASP: https://bovedadeuru.runasp.net
     -> Poner la URL real en el README (el plan gratuito se duerme).
